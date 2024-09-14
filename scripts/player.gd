@@ -5,6 +5,8 @@ extends CharacterBody2D
 var lock_move = false
 var wait: int = 0
 
+@onready var animatedSprite = $Sprite2D;
+
 signal moved(position: Vector2, cursor_position: Vector2)
 
 # Called when the node enters the scene tree for the first time.
@@ -25,9 +27,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("left"):
 		direction = Vector2(-1, 0)
+		animatedSprite.play("move_right");
 		$Sprite2D.flip_h = true
 	if Input.is_action_pressed("right"):
 		direction = Vector2(1, 0)
+		animatedSprite.play("move_right");
 		$Sprite2D.flip_h = false
 	if Input.is_action_pressed("up"):
 		direction = Vector2(0, -1)
@@ -38,6 +42,5 @@ func _physics_process(delta: float) -> void:
 	position += velocity.normalized()
 	
 	if velocity != Vector2.ZERO:
-		$Cursor.position = Vector2(direction.x * Globals.grid_size, direction.y * Globals.grid_size)
-		moved.emit(position, $Cursor.position)
+		moved.emit(position, Vector2(direction.x * Globals.grid_size, direction.y * Globals.grid_size))
 		lock_move = true

@@ -1,13 +1,30 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://csbh0c12hqmkt"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://csbh0c12hqmkt"]
 
-[ext_resource type="Texture2D" uid="uid://cyf36spa8dk2g" path="res://assets/aseprite/test_tileset.png" id="1_2xv60"]
+[ext_resource type="Texture2D" uid="uid://y71lwvm2agiq" path="res://assets/aseprite/tileset.png" id="1_6vne7"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fm4no"]
-texture = ExtResource("1_2xv60")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp868"]
+texture = ExtResource("1_6vne7")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
 
 [resource]
 terrain_set_0/mode = 0
@@ -15,4 +32,4 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "prepared"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_fm4no")
+sources/3 = SubResource("TileSetAtlasSource_lp868")
