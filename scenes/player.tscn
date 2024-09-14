@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dm3jmgt8ctg37"]
+[gd_scene load_steps=5 format=3 uid="uid://dm3jmgt8ctg37"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8rs7m"]
-[ext_resource type="Texture2D" uid="uid://d222j5wo1nujf" path="res://assets/aseprite/idle-player.png" id="2_3guny"]
-[ext_resource type="Texture2D" uid="uid://w6js6dd4gklr" path="res://assets/aseprite/move-left.png" id="3_1to81"]
+[ext_resource type="Texture2D" uid="uid://cdmd87fi046tr" path="res://assets/sprites/player.png" id="2_yy00o"]
+[ext_resource type="Texture2D" uid="uid://b5v1fogrx6prd" path="res://assets/sprites/cursor.png" id="3_v8jo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt0fk"]
 size = Vector2(14, 16)
@@ -116,8 +116,13 @@ script = ExtResource("1_8rs7m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lt0fk")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_hq22u")
-animation = &"move_left"
-frame = 3
-frame_progress = 0.391635
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yy00o")
+
+[node name="Cursor" type="Node2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
+z_index = 1
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_v8jo8")
