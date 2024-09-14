@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=4 uid="uid://dh0h5f0x3xoh6"]
 
-[ext_resource type="TileSet" uid="uid://csbh0c12hqmkt" path="res://assets/tilesets/new_tile_set.tres" id="1_1p0m5"]
-[ext_resource type="Script" path="res://scenes/main_camera.gd" id="1_o4f8r"]
+[ext_resource type="TileSet" uid="uid://csbh0c12hqmkt" path="res://assets/tilesets/outdoor.tres" id="1_1p0m5"]
+[ext_resource type="Script" path="res://scripts/main_camera.gd" id="1_o4f8r"]
 [ext_resource type="PackedScene" uid="uid://dm3jmgt8ctg37" path="res://scenes/player.tscn" id="1_ttxly"]
-[ext_resource type="Script" path="res://scenes/cursor_manager.gd" id="2_8qong"]
+[ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="2_8qong"]
 [ext_resource type="Texture2D" uid="uid://b5v1fogrx6prd" path="res://assets/sprites/cursor.png" id="2_71v41"]
 
 [node name="PlayerTest" type="Node2D"]

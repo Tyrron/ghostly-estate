@@ -12,7 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var player_cell = local_to_map(Vector2i(player.position))
+	var player_cell = local_to_map(to_local(Vector2i(player.position)))
 	var cellData = get_cell_tile_data(player_cell)
 	print("cellData : " , cellData)
 	if cellData:

@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		direction = Vector2(0, 1)
 	
 	velocity = speed * direction
-	position += velocity.normalized()
+	move_and_collide(velocity.normalized())
 	
 	if velocity != Vector2.ZERO:
 		moved.emit(position, Vector2(direction.x * Globals.grid_size, direction.y * Globals.grid_size))
