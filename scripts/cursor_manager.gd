@@ -2,6 +2,8 @@ extends Node2D
 
 @export var map: TileMapLayer
 
+signal cursor_moved(position: Vector2)
+
 func _on_player_moved(_position: Vector2, direction: Vector2) -> void:
 	var target_position = Vector2(
 		snappedi(_position.x + (direction.x * Globals.grid_size), Globals.grid_size),
@@ -11,3 +13,6 @@ func _on_player_moved(_position: Vector2, direction: Vector2) -> void:
 			(-1 if direction.x == -1 else 1) * Globals.grid_size / 2,
 			(-1 if direction.y == -1 else 1) * Globals.grid_size / 2
 		)
+		
+	cursor_moved.emit(position)
+	
