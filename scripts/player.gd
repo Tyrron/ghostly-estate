@@ -7,7 +7,7 @@ var wait: int = 0
 
 @onready var animatedSprite = $Sprite2D;
 
-signal moved(position: Vector2, cursor_position: Vector2)
+signal moved(position: Vector2, direction: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,5 +42,5 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(velocity.normalized())
 	
 	if velocity != Vector2.ZERO:
-		moved.emit(position, Vector2(direction.x * Globals.grid_size, direction.y * Globals.grid_size))
+		moved.emit(position, direction)
 		lock_move = true
