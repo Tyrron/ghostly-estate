@@ -5,13 +5,18 @@ extends CharacterBody2D
 var lock_move = false
 var wait: int = 0
 
+@onready var gameManager = get_parent();
 @onready var animatedSprite = $Sprite2D;
 
 signal moved(position: Vector2, direction: Vector2)
+signal enter_manor(inManor: bool);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animatedSprite.play("idle")
+	if gameManager.night == 0 :
+		animatedSprite.play("idle")
+	else : 
+		animatedSprite.play("idle_night")
 	pass # Replace with function body.
 	
 func _physics_process(delta: float) -> void:
@@ -27,11 +32,17 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("left"):
 		direction = Vector2(-1, 0)
-		animatedSprite.play("move_right");
+		if gameManager.night == 0 :
+			animatedSprite.play("move_right")
+		else : 
+			animatedSprite.play("move_right_night")
 		$Sprite2D.flip_h = true
 	if Input.is_action_pressed("right"):
 		direction = Vector2(1, 0)
-		animatedSprite.play("move_right");
+		if gameManager.night == 0 :
+			animatedSprite.play("move_right")
+		else : 
+			animatedSprite.play("move_right_night")
 		$Sprite2D.flip_h = false
 	if Input.is_action_pressed("up"):
 		direction = Vector2(0, -1)
@@ -44,3 +55,8 @@ func _physics_process(delta: float) -> void:
 	if velocity != Vector2.ZERO:
 		moved.emit(position, direction)
 		lock_move = true
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if  body.name == 'Player' :
+		enter_manor.emit(true);
+	pass # Replace with function body.
