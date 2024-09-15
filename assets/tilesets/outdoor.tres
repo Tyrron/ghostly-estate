@@ -1,12 +1,21 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://csbh0c12hqmkt"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://csbh0c12hqmkt"]
 
+[ext_resource type="Texture2D" uid="uid://ci1c8cm3egwyw" path="res://assets/aseprite/pumpkin.png" id="1_4qrcg"]
 [ext_resource type="Texture2D" uid="uid://y71lwvm2agiq" path="res://assets/aseprite/outdoor.png" id="1_6vne7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqtuh"]
+texture = ExtResource("1_4qrcg")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp868"]
 texture = ExtResource("1_6vne7")
 0:0/0 = 0
-0:0/0/custom_data_0 = true
+0:0/0/custom_data_1 = true
 1:0/0 = 0
+1:0/0/custom_data_0 = true
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -23,14 +32,19 @@ texture = ExtResource("1_6vne7")
 2:3/0 = 0
 3:3/0 = 0
 0:4/0 = 0
+0:4/0/custom_data_0 = true
 1:4/0 = 0
 2:4/0 = 0
+2:4/0/custom_data_0 = true
 3:4/0 = 0
 
 [resource]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-custom_data_layer_0/name = "farmable"
+custom_data_layer_0/name = "mowable"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "farmable"
+custom_data_layer_1/type = 1
 sources/3 = SubResource("TileSetAtlasSource_lp868")
+sources/0 = SubResource("TileSetAtlasSource_jqtuh")

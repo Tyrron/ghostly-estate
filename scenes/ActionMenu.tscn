@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbpupb5ronud3"]
+
+[ext_resource type="Texture2D" uid="uid://sew7jbf6kmpr" path="res://assets/aseprite/ui-tileset.png" id="1_px3xh"]
+[ext_resource type="FontFile" uid="uid://brk2hsb4ok3vv" path="res://assets/fonts/Daydream.ttf" id="2_wfylc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwwte"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_px3xh")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+region_rect = Rect2(0, 0, 48, 48)
+
+[sub_resource type="Theme" id="Theme_1l836"]
+default_font = ExtResource("2_wfylc")
+default_font_size = 20
+MarginContainer/constants/margin_left = 200
+Panel/styles/panel = SubResource("StyleBoxTexture_xwwte")
+
+[node name="ActionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.004
+anchor_top = 0.781
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.2
+offset_top = -0.320007
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1l836")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/Panel"]
+clip_children = 1
+z_as_relative = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319322
+anchor_top = 0.414557
+anchor_right = 0.680678
+anchor_bottom = 0.585443
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="Mow" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
+theme_override_fonts/font = ExtResource("2_wfylc")
+text = "Mow"
+metadata/_edit_use_anchors_ = true
+
+[node name="Plant" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
+theme_override_fonts/font = ExtResource("2_wfylc")
+text = "Plant
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Trap" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
+theme_override_fonts/font = ExtResource("2_wfylc")
+text = "Trap
+"
+metadata/_edit_use_anchors_ = true
