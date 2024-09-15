@@ -13,16 +13,10 @@ func _process(delta: float) -> void:
 	var player_cell = local_to_map(to_local(Vector2i(cursor.position)))
 	var cellData = get_cell_tile_data(player_cell)
 	if Input.is_action_just_pressed("action"):
-		print("cellData : " , cellData)
-		print(cellData.get_custom_data("mowable"));
-		print(cellData.get_custom_data("farmable"))
-		if cellData.get_custom_data("mowable") == true :
-			var cellId = get_cell_source_id(player_cell);
-			print(cellId);
+		if cellData.get_custom_data("hoeable") == true :
 			set_cell(player_cell,3,Vector2i(0,0));
 			return;
-		if cellData.get_custom_data("mowable") == false && cellData.get_custom_data("farmable") == true :
-			var cellId = get_cell_source_id(player_cell);
+		if cellData.get_custom_data("hoeable") == false && cellData.get_custom_data("farmable") == true :
 			set_cell(player_cell,0,Vector2i(0,0));
 			return;
 	pass

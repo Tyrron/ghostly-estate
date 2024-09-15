@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cy64taod01e1o"]
+
+[ext_resource type="Texture2D" uid="uid://sew7jbf6kmpr" path="res://assets/aseprite/ui-tileset.png" id="1_082j4"]
+[ext_resource type="FontFile" uid="uid://brk2hsb4ok3vv" path="res://assets/fonts/Daydream.ttf" id="2_7d473"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwwte"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_082j4")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+region_rect = Rect2(0, 0, 48, 48)
+
+[resource]
+default_font = ExtResource("2_7d473")
+default_font_size = 20
+Label/colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
+MarginContainer/constants/margin_left = 200
+Panel/styles/panel = SubResource("StyleBoxTexture_xwwte")

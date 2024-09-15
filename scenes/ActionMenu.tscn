@@ -1,25 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbpupb5ronud3"]
+[gd_scene load_steps=2 format=3 uid="uid://bbpupb5ronud3"]
 
-[ext_resource type="Texture2D" uid="uid://sew7jbf6kmpr" path="res://assets/aseprite/ui-tileset.png" id="1_px3xh"]
-[ext_resource type="FontFile" uid="uid://brk2hsb4ok3vv" path="res://assets/fonts/Daydream.ttf" id="2_wfylc"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwwte"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-texture = ExtResource("1_px3xh")
-texture_margin_left = 24.0
-texture_margin_top = 24.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
-region_rect = Rect2(0, 0, 48, 48)
-
-[sub_resource type="Theme" id="Theme_1l836"]
-default_font = ExtResource("2_wfylc")
-default_font_size = 20
-MarginContainer/constants/margin_left = 200
-Panel/styles/panel = SubResource("StyleBoxTexture_xwwte")
+[ext_resource type="Theme" uid="uid://cy64taod01e1o" path="res://assets/theme/UiTheme.tres" id="1_t54j5"]
 
 [node name="ActionMenu" type="Control"]
 layout_mode = 3
@@ -41,7 +22,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
-theme = SubResource("Theme_1l836")
+theme = ExtResource("1_t54j5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/Panel"]
 clip_children = 1
@@ -58,25 +39,20 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="Mow" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+[node name="Hoe" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
-theme_override_fonts/font = ExtResource("2_wfylc")
-text = "Mow"
+text = "Hoe
+"
 metadata/_edit_use_anchors_ = true
 
 [node name="Plant" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
-theme_override_fonts/font = ExtResource("2_wfylc")
 text = "Plant
 "
 metadata/_edit_use_anchors_ = true
 
 [node name="Trap" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
-theme_override_fonts/font = ExtResource("2_wfylc")
 text = "Trap
 "
 metadata/_edit_use_anchors_ = true
