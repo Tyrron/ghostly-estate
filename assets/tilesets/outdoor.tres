@@ -1,12 +1,16 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://csbh0c12hqmkt"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://csbh0c12hqmkt"]
 
 [ext_resource type="Texture2D" uid="uid://y71lwvm2agiq" path="res://assets/aseprite/outdoor.png" id="1_6vne7"]
+[ext_resource type="Texture2D" uid="uid://cdkqkn4ycjnno" path="res://assets/aseprite/outdoor-night.png" id="1_xw6dd"]
+[ext_resource type="Texture2D" uid="uid://cecia6iihqkk6" path="res://assets/aseprite/crops-day.png" id="3_vrdb7"]
+[ext_resource type="Texture2D" uid="uid://rbn4y8jmhpni" path="res://assets/aseprite/crops-night.png" id="4_ourq2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp868"]
 texture = ExtResource("1_6vne7")
 0:0/0 = 0
-0:0/0/custom_data_0 = true
+0:0/0/custom_data_1 = true
 1:0/0 = 0
+1:0/0/custom_data_0 = true
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -23,14 +27,62 @@ texture = ExtResource("1_6vne7")
 2:3/0 = 0
 3:3/0 = 0
 0:4/0 = 0
+0:4/0/custom_data_0 = true
+1:4/0 = 0
+2:4/0 = 0
+2:4/0/custom_data_0 = true
+3:4/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nj8e3"]
+texture = ExtResource("3_vrdb7")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqirk"]
+texture = ExtResource("4_ourq2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n32yq"]
+texture = ExtResource("1_xw6dd")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
 1:4/0 = 0
 2:4/0 = 0
 3:4/0 = 0
 
 [resource]
+physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-custom_data_layer_0/name = "farmable"
+terrain_set_0/terrain_0/name = "Day"
+terrain_set_0/terrain_0/color = Color(0.993829, 0.720369, 0.325446, 1)
+custom_data_layer_0/name = "hoeable"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "farmable"
+custom_data_layer_1/type = 1
 sources/3 = SubResource("TileSetAtlasSource_lp868")
+sources/4 = SubResource("TileSetAtlasSource_nj8e3")
+sources/5 = SubResource("TileSetAtlasSource_pqirk")
+sources/6 = SubResource("TileSetAtlasSource_n32yq")
