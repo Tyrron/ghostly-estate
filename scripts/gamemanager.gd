@@ -22,7 +22,7 @@ func set_night(is_night: bool) -> void:
 		night_timer.one_shot = true
 		night_timer.autostart = false
 		add_child(night_timer)
-		night_timer.start(5)
+		night_timer.start(7)
 		night_timer.timeout.connect(func(): night_end.emit())
 
 

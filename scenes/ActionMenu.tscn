@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://s1mw3v4tb0xn"]
+[gd_scene load_steps=55 format=3 uid="uid://s1mw3v4tb0xn"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_1jlf5"]
 [ext_resource type="Script" path="res://scripts/hud_manager.gd" id="1_b7307"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://scripts/action_menu_cursor.gd" id="4_1i46v"]
 [ext_resource type="Texture2D" uid="uid://cwwfj8gqucovh" path="res://assets/aseprite/transiNightToDay.png" id="4_kykor"]
 [ext_resource type="Script" path="res://crop_menu_cursor.gd" id="5_861pm"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="7_26nyq"]
+[ext_resource type="Theme" uid="uid://o2b6un8ove81" path="res://assets/theme/UiTheme-night-timer.tres" id="7_hopng"]
+[ext_resource type="Theme" uid="uid://b0q0jowgiuroi" path="res://assets/theme/UiTheme-night.tres" id="7_nbj6t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0n23y"]
 atlas = ExtResource("3_r6ijk")
@@ -156,8 +159,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nykpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nykpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nykpp")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 6.0
 }]
@@ -304,8 +313,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3a8jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a8jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a8jl")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 6.0
 }]
@@ -315,6 +330,7 @@ follow_viewport_enabled = true
 script = ExtResource("1_b7307")
 
 [node name="Menu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -354,20 +370,17 @@ alignment = 1
 
 [node name="Dig" type="Label" parent="Menu/ActionMenuContainer/Menu/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_t54j5")
 text = "Dig"
 metadata/_edit_use_anchors_ = true
 
 [node name="Plant" type="Label" parent="Menu/ActionMenuContainer/Menu/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_t54j5")
 text = "Plant
 "
 metadata/_edit_use_anchors_ = true
 
 [node name="Trap" type="Label" parent="Menu/ActionMenuContainer/Menu/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_t54j5")
 text = "Trap
 "
 metadata/_edit_use_anchors_ = true
@@ -421,39 +434,55 @@ texture = SubResource("AtlasTexture_0n23y")
 script = ExtResource("5_861pm")
 cursor_offset = Vector2(8, 0)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="NightTimerPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -83.0
-offset_right = 83.0
-offset_bottom = 26.0
+offset_left = -22.0
+offset_right = 22.0
+offset_bottom = 19.0
 grow_horizontal = 2
-size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("7_hopng")
 
-[node name="NightTimer" type="Label" parent="Control"]
+[node name="Panel" type="Panel" parent="NightTimerPanel"]
+layout_mode = 2
+
+[node name="NightTimer" type="Label" parent="NightTimerPanel/Panel"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_t54j5")
+theme = ExtResource("7_nbj6t")
 text = "59:59"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TransiDayNight" type="AnimatedSprite2D" parent="."]
+[node name="Transition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_26nyq")
+
+[node name="TransiDayNight" type="AnimatedSprite2D" parent="Transition"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_7d2kx")
-frame = 17
-frame_progress = 0.851189
+frame = 21
+frame_progress = 1.0
 centered = false
 
-[node name="TransiNightDay" type="AnimatedSprite2D" parent="."]
+[node name="TransiNightDay" type="AnimatedSprite2D" parent="Transition"]
 visible = false
 position = Vector2(80, 72)
 sprite_frames = SubResource("SpriteFrames_ja01l")
 frame_progress = 0.269288
+
+[connection signal="animation_finished" from="Transition/TransiDayNight" to="Transition" method="_on_transi_day_night_animation_finished"]
+[connection signal="animation_finished" from="Transition/TransiNightDay" to="Transition" method="_on_transi_night_day_animation_finished"]
