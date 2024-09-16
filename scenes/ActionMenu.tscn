@@ -1,15 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbpupb5ronud3"]
+[gd_scene load_steps=2 format=3 uid="uid://s1mw3v4tb0xn"]
 
 [ext_resource type="Theme" uid="uid://cy64taod01e1o" path="res://assets/theme/UiTheme.tres" id="1_t54j5"]
 
-[node name="ActionMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="ActionMenu" type="CanvasLayer"]
+follow_viewport_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = -1
 anchor_left = 0.004
 anchor_top = 0.781
@@ -20,39 +16,40 @@ offset_top = -0.320007
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PanelContainer"]
+[node name="Panel" type="Panel" parent="PanelContainer"]
 layout_mode = 2
 theme = ExtResource("1_t54j5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel"]
 clip_children = 1
 z_as_relative = false
-clip_contents = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.319322
-anchor_top = 0.414557
-anchor_right = 0.680678
-anchor_bottom = 0.585443
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Hoe" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+[node name="Hoe" type="Label" parent="PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_t54j5")
 text = "Hoe
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Plant" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+[node name="Plant" type="Label" parent="PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_t54j5")
 text = "Plant
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Trap" type="Label" parent="CanvasLayer/PanelContainer/Panel/HBoxContainer"]
+[node name="Trap" type="Label" parent="PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_t54j5")
 text = "Trap
 "
 metadata/_edit_use_anchors_ = true

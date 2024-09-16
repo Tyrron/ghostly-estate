@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://uhx82bpqyemh" path="res://assets/tilesets/manor.tres" id="3_3jqrq"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="6_of5u1"]
 [ext_resource type="Texture2D" uid="uid://b5v1fogrx6prd" path="res://assets/sprites/cursor.png" id="7_0lbuw"]
-[ext_resource type="PackedScene" uid="uid://bbpupb5ronud3" path="res://scenes/ActionMenu.tscn" id="8_rdrxb"]
+[ext_resource type="PackedScene" uid="uid://s1mw3v4tb0xn" path="res://scenes/ActionMenu.tscn" id="8_rdrxb"]
 [ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="8_volhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gaks"]
@@ -26,11 +26,11 @@ tile_map_data = PackedByteArray("AAADAPz/AQABAAQAAAADAP3/AQABAAUAAAADAP7/AQABAAY
 tile_set = ExtResource("3_3jqrq")
 
 [node name="Player" parent="." instance=ExtResource("2_88nb7")]
+unique_name_in_owner = true
 position = Vector2(88, 56)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(116, 75)
-editor_draw_limits = true
+position = Vector2(83, 70)
 script = ExtResource("6_of5u1")
 
 [node name="Cursor" type="Sprite2D" parent="."]
@@ -38,7 +38,7 @@ texture = ExtResource("7_0lbuw")
 script = ExtResource("8_volhw")
 
 [node name="ActionMenu" parent="." instance=ExtResource("8_rdrxb")]
-visible = false
+follow_viewport_enabled = false
 
 [node name="Triggers" type="Node2D" parent="."]
 

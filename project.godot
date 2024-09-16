@@ -21,11 +21,9 @@ Globals="*res://globals.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=720
-window/size/resizable=false
+window/size/viewport_width=166
+window/size/viewport_height=140
 window/stretch/mode="viewport"
-window/stretch/scale=5.0
 window/stretch/scale_mode="integer"
 
 [dotnet]

@@ -19,5 +19,6 @@ region_rect = Rect2(0, 0, 48, 48)
 default_font = ExtResource("2_7d473")
 default_font_size = 20
 Label/colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
+Label/font_sizes/font_size = 8
 MarginContainer/constants/margin_left = 200
 Panel/styles/panel = SubResource("StyleBoxTexture_xwwte")
