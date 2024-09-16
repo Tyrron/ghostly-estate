@@ -1,6 +1,8 @@
 extends Node2D
 
 var night = false;
+var menu_open = false;
+var action_selected = null;
 
 signal night_begin
 
