@@ -3,7 +3,11 @@ extends TextureRect
 @onready var parent_menu : HBoxContainer = get_parent().get_node('ActionMenuContainer/Menu/HBoxContainer')
 @export var cursor_offset : Vector2
 
-
+var actions = [
+	"DIG",
+	"PLANT",
+	"TRAP"
+]
 var cursor_index : int = 0
 
 
@@ -19,9 +23,8 @@ func _process(delta: float) -> void:
 		input.x += 1
 	if Input.is_action_just_pressed("left") : 
 		input.x -= 1
-		
 	set_cursor_from_index(cursor_index + input.x);
-	
+	set_action_selected(cursor_index);
 	pass
 
 
@@ -42,3 +45,7 @@ func set_cursor_from_index(index : int ) -> void:
 	
 	global_position = Vector2(position.x,position.y + size.y / 2.0) - ( size / 2.0 ) - cursor_offset;
 	cursor_index = index;
+	
+func set_action_selected(index : int) -> void :
+	GameManager.action_selected = actions[index];
+	pass
