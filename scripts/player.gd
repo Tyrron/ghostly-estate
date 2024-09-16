@@ -5,21 +5,22 @@ extends CharacterBody2D
 var lock_move = false
 var wait: int = 0
 
-@onready var gameManager = get_parent();
 @onready var animatedSprite = $Sprite2D;
-
-var idle_animation: String = "idle";
-var walk_animation: String = "move_right";
 
 signal moved(position: Vector2, direction: Vector2)
 signal enter_manor(inManor: bool);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animatedSprite.play(idle_animation)
-	GameManager.night_begin.connect(_on_night_begin)
+	if GameManager.night == false :
+		animatedSprite.play("idle")
+	else : 
+		animatedSprite.play("idle_night")
 	
-func _physics_process(delta: float) -> void:
+	GameManager.night_begin.connect(_on_night_begin)
+	GameManager.night_end.connect(_on_night_end)
+	
+func _physics_process(_delta: float) -> void:
 	if lock_move:
 		wait += 1
 		if wait % wait_frames == 0:
@@ -32,11 +33,17 @@ func _physics_process(delta: float) -> void:
 	if GameManager.menu_open == false :
 		if Input.is_action_pressed("left"):
 			direction = Vector2(-1, 0)
-			animatedSprite.play(walk_animation)
+			if GameManager.night == false :
+				animatedSprite.play("walk_right")
+			else : 
+				animatedSprite.play("walk_right_night")
 			$Sprite2D.flip_h = true
 		if Input.is_action_pressed("right"):
 			direction = Vector2(1, 0)
-			animatedSprite.play(walk_animation)
+			if GameManager.night == false :
+				animatedSprite.play("walk_right")
+			else : 
+				animatedSprite.play("walk_right_night")
 			$Sprite2D.flip_h = false
 		if Input.is_action_pressed("up"):
 			direction = Vector2(0, -1)
@@ -56,6 +63,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		GameManager.set_night(true)
 
 func _on_night_begin() -> void:
-		idle_animation = "idle_night";
-		walk_animation = "move_right_night";
 		animatedSprite.play("idle_night");
+
+func _on_night_end() -> void:
+		animatedSprite.play("idle");

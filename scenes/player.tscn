@@ -219,5 +219,6 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_lt0fk")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_hq22u")
 animation = &"move_right_night"
