@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var targeted_cell = %Cursor.cell_position
 	var cellData = get_cell_tile_data(targeted_cell)
-	if Input.is_action_just_pressed("action") and GameManager.night == 0:
+	if Input.is_action_just_pressed("action") and GameManager.night == false:
 		if cellData.get_custom_data("hoeable") == true :
 			set_cell(targeted_cell, OUTDOOR_DAY_SOURCE_ID, HOED_GROUND_TILE_COORD);
 			return;

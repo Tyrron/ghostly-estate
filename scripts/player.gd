@@ -12,7 +12,7 @@ signal enter_manor(inManor: bool);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if GameManager.night == 0 :
+	if GameManager.night == false :
 		animatedSprite.play("idle")
 	else : 
 		animatedSprite.play("idle_night")
@@ -30,25 +30,25 @@ func _physics_process(_delta: float) -> void:
 	
 	velocity = Vector2.ZERO
 	var direction = Vector2(0, 0)
-	
-	if Input.is_action_pressed("left"):
-		direction = Vector2(-1, 0)
-		if GameManager.night == 0 :
-			animatedSprite.play("move_right")
-		else : 
-			animatedSprite.play("move_right_night")
-		$Sprite2D.flip_h = true
-	if Input.is_action_pressed("right"):
-		direction = Vector2(1, 0)
-		if GameManager.night == 0 :
-			animatedSprite.play("move_right")
-		else : 
-			animatedSprite.play("move_right_night")
-		$Sprite2D.flip_h = false
-	if Input.is_action_pressed("up"):
-		direction = Vector2(0, -1)
-	if Input.is_action_pressed("down"):
-		direction = Vector2(0, 1)
+	if GameManager.menu_open == false :
+		if Input.is_action_pressed("left"):
+			direction = Vector2(-1, 0)
+			if GameManager.night == false :
+				animatedSprite.play("walk_right")
+			else : 
+				animatedSprite.play("walk_right_night")
+			$Sprite2D.flip_h = true
+		if Input.is_action_pressed("right"):
+			direction = Vector2(1, 0)
+			if GameManager.night == false :
+				animatedSprite.play("walk_right")
+			else : 
+				animatedSprite.play("walk_right_night")
+			$Sprite2D.flip_h = false
+		if Input.is_action_pressed("up"):
+			direction = Vector2(0, -1)
+		if Input.is_action_pressed("down"):
+			direction = Vector2(0, 1)
 	
 	velocity = speed * direction
 	move_and_collide(velocity.normalized())
