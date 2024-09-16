@@ -17,7 +17,8 @@ func _ready() -> void:
 		animatedSprite.play("idle")
 	else : 
 		animatedSprite.play("idle_night")
-	pass # Replace with function body.
+	
+	GameManager.night_begin.connect(_on_night_begin)
 	
 func _physics_process(delta: float) -> void:
 	if lock_move:
@@ -57,6 +58,9 @@ func _physics_process(delta: float) -> void:
 		lock_move = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if  body.name == 'Player' :
-		enter_manor.emit(true);
-	pass # Replace with function body.
+	if body.name == 'Player':
+		enter_manor.emit(true)
+		GameManager.set_night(true)
+
+func _on_night_begin() -> void:
+		animatedSprite.play("idle_night");

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm3jmgt8ctg37" path="res://scenes/player.tscn" id="1_ttxly"]
 [ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="2_8qong"]
 [ext_resource type="Texture2D" uid="uid://b5v1fogrx6prd" path="res://assets/sprites/cursor.png" id="2_71v41"]
-[ext_resource type="Script" path="res://scripts/interactions.gd" id="2_a0bn6"]
+[ext_resource type="Script" path="res://scripts/ground.gd" id="2_a0bn6"]
 
 [node name="PlayerTest" type="Node2D"]
 
