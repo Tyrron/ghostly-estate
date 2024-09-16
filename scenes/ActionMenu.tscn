@@ -168,7 +168,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 6.0
+"speed": 7.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nk41q"]
@@ -322,7 +322,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 6.0
+"speed": 7.0
 }]
 
 [node name="ActionMenu" type="CanvasLayer"]

@@ -1,9 +1,12 @@
 extends Node2D
 
+var timer_duration : int = 60;
+var transition_duration : int = 3;
 var night = false;
 var menu_open = false;
 var action_selected = null;
 var night_timer: Timer
+
 
 signal night_begin
 signal night_end
@@ -22,7 +25,7 @@ func set_night(is_night: bool) -> void:
 		night_timer.one_shot = true
 		night_timer.autostart = false
 		add_child(night_timer)
-		night_timer.start(7)
+		night_timer.start(timer_duration + transition_duration )
 		night_timer.timeout.connect(func(): night_end.emit())
 
 

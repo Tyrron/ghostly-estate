@@ -18,6 +18,12 @@ func _process(delta: float) -> void:
 			visible = true
 			GameManager.menu_open = true;
 			return
+	if GameManager.action_selected != "PLANT" :
+		$CropMenuContainer.visible = false;
+		$Crop_Cursor.visible = false;
+	else : 
+		$CropMenuContainer.visible = true;
+		$Crop_Cursor.visible = true;
 	pass
 
 
