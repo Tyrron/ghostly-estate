@@ -33,9 +33,11 @@ position = Vector2(88, 56)
 position = Vector2(83, 70)
 script = ExtResource("6_of5u1")
 
-[node name="Cursor" type="Sprite2D" parent="."]
+[node name="Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("map")]
+unique_name_in_owner = true
 texture = ExtResource("7_0lbuw")
 script = ExtResource("8_volhw")
+map = NodePath("../Ground")
 
 [node name="ActionMenu" parent="." instance=ExtResource("8_rdrxb")]
 follow_viewport_enabled = false
