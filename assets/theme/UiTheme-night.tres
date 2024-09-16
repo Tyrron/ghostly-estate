@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cy64taod01e1o"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b0q0jowgiuroi"]
 
-[ext_resource type="Texture2D" uid="uid://sew7jbf6kmpr" path="res://assets/aseprite/ui-tileset.png" id="1_082j4"]
-[ext_resource type="FontFile" uid="uid://b65kclted0ik5" path="res://assets/fonts/m5x7.ttf" id="1_mrbnq"]
+[ext_resource type="FontFile" uid="uid://b65kclted0ik5" path="res://assets/fonts/m5x7.ttf" id="1_a15en"]
+[ext_resource type="Texture2D" uid="uid://cqvq7ccir82jo" path="res://assets/aseprite/ui-tileset-night.png" id="2_3x1mn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp0dk"]
 
@@ -10,7 +10,7 @@ content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-texture = ExtResource("1_082j4")
+texture = ExtResource("2_3x1mn")
 texture_margin_left = 24.0
 texture_margin_top = 24.0
 texture_margin_right = 24.0
@@ -18,9 +18,9 @@ texture_margin_bottom = 24.0
 region_rect = Rect2(0, 0, 48, 48)
 
 [resource]
-default_font = ExtResource("1_mrbnq")
+default_font = ExtResource("1_a15en")
 default_font_size = 10
-Label/colors/font_color = Color(0.929412, 0.972549, 0.784314, 1)
+Label/colors/font_color = Color(0.545098, 0.898039, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/line_spacing = 3
@@ -29,7 +29,7 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 16
-Label/fonts/font = ExtResource("1_mrbnq")
+Label/fonts/font = ExtResource("1_a15en")
 Label/styles/normal = SubResource("StyleBoxEmpty_cp0dk")
 MarginContainer/constants/margin_left = 200
 Panel/styles/panel = SubResource("StyleBoxTexture_xwwte")

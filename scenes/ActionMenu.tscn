@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://s1mw3v4tb0xn"]
+[gd_scene load_steps=3 format=3 uid="uid://s1mw3v4tb0xn"]
 
+[ext_resource type="Script" path="res://scripts/action_menu.gd" id="1_5k5r8"]
 [ext_resource type="Theme" uid="uid://cy64taod01e1o" path="res://assets/theme/UiTheme.tres" id="1_t54j5"]
 
 [node name="ActionMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_5k5r8")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = -1
@@ -31,7 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Hoe" type="Label" parent="PanelContainer/Panel/HBoxContainer"]
 layout_mode = 2

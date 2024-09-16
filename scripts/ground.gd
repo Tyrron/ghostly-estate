@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_cell = local_to_map(to_local(Vector2i(cursor.position)))
 	var cellData = get_cell_tile_data(player_cell)
-	if Input.is_action_just_pressed("action") and GameManager.night == 0:
+	if Input.is_action_just_pressed("action") and GameManager.night == false:
 		if cellData.get_custom_data("hoeable") == true :
 			set_cell(player_cell,3,Vector2i(0,0));
 			return;

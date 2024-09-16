@@ -1,12 +1,11 @@
 extends Node2D
 
-var night = 0
+var night = false;
 
 signal night_begin
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,6 +13,10 @@ func _process(delta: float) -> void:
 	pass
 
 func set_night(is_night: bool) -> void:
+	night = is_night
 	if is_night:
-		night = 1
 		night_begin.emit()
+
+func get_night() -> bool: 
+	return night;
+	
