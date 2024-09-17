@@ -1,3 +1,4 @@
+class_name DayManager
 extends Node2D
 
 var timer_duration : int = 60;
@@ -7,13 +8,11 @@ var menu_open = false;
 var action_selected = null;
 var night_timer: Timer
 
-
 signal night_begin
 signal night_end
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	night_end.connect(_on_night_end)
 	pass # Replace with function body.
 
 func set_night(is_night: bool) -> void:
@@ -27,7 +26,6 @@ func set_night(is_night: bool) -> void:
 		add_child(night_timer)
 		night_timer.start(timer_duration + transition_duration )
 		night_timer.timeout.connect(func(): night_end.emit())
-
 
 func _on_night_end() -> void:
 	night = false

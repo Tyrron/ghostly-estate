@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c1xg1eqplq47r"]
+[gd_scene load_steps=12 format=4 uid="uid://c1xg1eqplq47r"]
 
 [ext_resource type="TileSet" uid="uid://csbh0c12hqmkt" path="res://assets/tilesets/outdoor.tres" id="1_6yw8x"]
 [ext_resource type="PackedScene" uid="uid://dm3jmgt8ctg37" path="res://scenes/player.tscn" id="2_88nb7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b5v1fogrx6prd" path="res://assets/sprites/cursor.png" id="7_0lbuw"]
 [ext_resource type="PackedScene" uid="uid://s1mw3v4tb0xn" path="res://scenes/ActionMenu.tscn" id="8_rdrxb"]
 [ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="8_volhw"]
+[ext_resource type="Script" path="res://scripts/day_manager.gd" id="10_2132l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gaks"]
 size = Vector2(32, 11)
@@ -51,7 +52,26 @@ position = Vector2(112, -7.5)
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_4gaks")
 
+[node name="CropManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="DayManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_2132l")
+
+[node name="NightTimer" type="Timer" parent="DayManager"]
+
+[connection signal="action" from="Player" to="Ground" method="_on_player_action"]
 [connection signal="enter_manor" from="Player" to="." method="_on_player_enter_manor"]
 [connection signal="moved" from="Player" to="Camera2D" method="_on_player_moved"]
 [connection signal="moved" from="Player" to="Cursor" method="_on_player_moved"]
 [connection signal="body_entered" from="Triggers/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="night_begin" from="DayManager" to="Ground" method="_on_night_begin"]
+[connection signal="night_begin" from="DayManager" to="Buildings" method="_on_night_begin"]
+[connection signal="night_begin" from="DayManager" to="Player" method="_on_night_begin"]
+[connection signal="night_begin" from="DayManager" to="ActionMenu" method="_on_night_begin"]
+[connection signal="night_end" from="DayManager" to="Ground" method="_on_night_end"]
+[connection signal="night_end" from="DayManager" to="Buildings" method="_on_night_end"]
+[connection signal="night_end" from="DayManager" to="Player" method="_on_night_end"]
+[connection signal="night_end" from="DayManager" to="ActionMenu" method="_on_night_end"]
+[connection signal="night_end" from="DayManager" to="DayManager" method="_on_night_end"]
