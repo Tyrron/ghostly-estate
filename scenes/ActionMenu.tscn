@@ -484,5 +484,7 @@ position = Vector2(80, 72)
 sprite_frames = SubResource("SpriteFrames_ja01l")
 frame_progress = 0.269288
 
+[connection signal="night_begin" from="." to="Transition" method="_on_night_begin"]
+[connection signal="night_end" from="." to="Transition" method="_on_night_end"]
 [connection signal="animation_finished" from="Transition/TransiDayNight" to="Transition" method="_on_transi_day_night_animation_finished"]
 [connection signal="animation_finished" from="Transition/TransiNightDay" to="Transition" method="_on_transi_night_day_animation_finished"]

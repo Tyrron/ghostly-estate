@@ -2,8 +2,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.night_begin.connect(_on_night_begin)
-	GameManager.night_end.connect(_on_night_end)
 	pass # Replace with function body.
 
 
@@ -12,13 +10,13 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("select") : 
 		if visible == true:
 			visible = false
-			GameManager.menu_open = false;
+			owner.menu_open = false;
 			return
 		if visible == false:
 			visible = true
-			GameManager.menu_open = true;
+			owner.menu_open = true;
 			return
-	if GameManager.action_selected != "PLANT" :
+	if owner.selected_action != "PLANT" :
 		$CropMenuContainer.visible = false;
 		$Crop_Cursor.visible = false;
 	else : 

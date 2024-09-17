@@ -1,12 +1,9 @@
 class_name DayManager
-extends Node2D
+extends Node
 
 var timer_duration : int = 60;
 var transition_duration : int = 3;
 var night = false;
-var menu_open = false;
-var action_selected = null;
-var night_timer: Timer
 
 signal night_begin
 signal night_end
@@ -20,13 +17,7 @@ func set_night(is_night: bool) -> void:
 	if is_night == true:
 		night = true
 		night_begin.emit()
-		night_timer = Timer.new()
-		night_timer.one_shot = true
-		night_timer.autostart = false
-		add_child(night_timer)
-		night_timer.start(timer_duration + transition_duration )
-		night_timer.timeout.connect(func(): night_end.emit())
 
-func _on_night_end() -> void:
+func _on_night_timer_timeout() -> void:
 	night = false
-	night_timer.queue_free()
+	night_end.emit()

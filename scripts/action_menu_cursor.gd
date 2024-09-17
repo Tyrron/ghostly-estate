@@ -47,5 +47,5 @@ func set_cursor_from_index(index : int ) -> void:
 	cursor_index = index;
 	
 func set_action_selected(index : int) -> void :
-	GameManager.action_selected = actions[index];
+	owner.selected_action = actions[index];
 	pass

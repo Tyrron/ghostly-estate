@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 @export var speed: int = 1
 @export var wait_frames: int = 1
+# global lock
 var lock_move = false
+# frame lock, meant to slow down character moves (shouldn't be updated by another script)
+var frame_lock_move = false
 var wait: int = 0
 
 @onready var animatedSprite = $Sprite2D;
@@ -22,16 +25,16 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_released("action"):
 		action.emit(%Cursor.position, %Cursor.cell_position)
 		
-	if lock_move:
+	if frame_lock_move:
 		wait += 1
 		if wait % wait_frames == 0:
 			wait = 0
-			lock_move = false
+			frame_lock_move = false
 		return
 	
 	velocity = Vector2.ZERO
 	var direction = Vector2(0, 0)
-	if %DayManager.menu_open == false :
+	if !lock_move:
 		if Input.is_action_pressed("left"):
 			direction = Vector2(-1, 0)
 			if %DayManager.night == false :
@@ -56,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if velocity != Vector2.ZERO:
 		moved.emit(position, direction)
-		lock_move = true
+		frame_lock_move = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
@@ -68,3 +71,7 @@ func _on_night_begin() -> void:
 
 func _on_night_end() -> void:
 		animatedSprite.play("idle");
+
+func _on_action_menu_menu_toggle(is_open: bool) -> void:
+	# prevent player moving if menu is open
+	lock_move = is_open

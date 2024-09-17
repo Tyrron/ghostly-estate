@@ -60,18 +60,23 @@ unique_name_in_owner = true
 script = ExtResource("10_2132l")
 
 [node name="NightTimer" type="Timer" parent="DayManager"]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="action" from="Player" to="Ground" method="_on_player_action"]
 [connection signal="enter_manor" from="Player" to="." method="_on_player_enter_manor"]
 [connection signal="moved" from="Player" to="Camera2D" method="_on_player_moved"]
 [connection signal="moved" from="Player" to="Cursor" method="_on_player_moved"]
+[connection signal="menu_toggle" from="ActionMenu" to="Player" method="_on_action_menu_menu_toggle"]
 [connection signal="body_entered" from="Triggers/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="night_begin" from="DayManager" to="Ground" method="_on_night_begin"]
 [connection signal="night_begin" from="DayManager" to="Buildings" method="_on_night_begin"]
 [connection signal="night_begin" from="DayManager" to="Player" method="_on_night_begin"]
 [connection signal="night_begin" from="DayManager" to="ActionMenu" method="_on_night_begin"]
+[connection signal="night_begin" from="DayManager" to="DayManager/NightTimer" method="start"]
 [connection signal="night_end" from="DayManager" to="Ground" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="Buildings" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="Player" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="ActionMenu" method="_on_night_end"]
-[connection signal="night_end" from="DayManager" to="DayManager" method="_on_night_end"]
+[connection signal="timeout" from="DayManager/NightTimer" to="DayManager" method="_on_night_end"]
+[connection signal="timeout" from="DayManager/NightTimer" to="DayManager" method="_on_night_timer_timeout"]
