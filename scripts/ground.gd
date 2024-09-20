@@ -9,6 +9,7 @@ const CROPS_NIGHT_SOURCE_ID = 5
 
 signal player_hoed(cell_position: Vector2i)
 signal player_planted(cell_position: Vector2i)
+signal player_gathered(cell_position: Vector2i, cropType : int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,18 +48,35 @@ func _on_night_end() -> void:
 	for i in all_tile_crops:
 		var atlas_cord = get_cell_atlas_coords(i);
 		var atlas_transform = get_cell_alternative_tile(i);
+		var tile_data = get_cell_tile_data(i);
+		var cropType = tile_data.get_custom_data("cropType");
+		var cropAge = tile_data.get_custom_data("cropAge");
+		if cropAge < Globals.crops[cropType].daysToGrow :
+			atlas_cord.x += 1;
 		set_cell(i, CROPS_DAY_SOURCE_ID, atlas_cord,atlas_transform);
 
 func _on_player_action(_position: Vector2, cell_position: Vector2i) -> void:
 	var cellData = get_cell_tile_data(cell_position)
-	if %DayManager.night == 1:
+	print(Globals.action_menu_selection);
+	if %DayManager.night == true:
 		return
-
-	if cellData.get_custom_data("hoeable") == true :
-		set_cell(cell_position, OUTDOOR_DAY_SOURCE_ID, HOED_GROUND_TILE_COORD);
-		player_hoed.emit(cell_position)
-		return;
-	if cellData.get_custom_data("hoeable") == false && cellData.get_custom_data("farmable") == true :
-		set_cell(cell_position, CROPS_DAY_SOURCE_ID, HOED_GROUND_TILE_COORD);
-		player_planted.emit(cell_position)
-		return;
+	if Globals.action_menu_selection == "DIG" : 
+		if cellData.get_custom_data("hoeable") == true :
+			set_cell(cell_position, OUTDOOR_DAY_SOURCE_ID, HOED_GROUND_TILE_COORD);
+			player_hoed.emit(cell_position)
+			return;
+	if Globals.action_menu_selection == "PLANT" :
+		if cellData.get_custom_data("hoeable") == false && cellData.get_custom_data("farmable") == true :
+			if Globals.crops[Globals.crop_menu_selection].inPlayerInventory > 0 :
+				set_cell(cell_position, CROPS_DAY_SOURCE_ID, Globals.crops[Globals.crop_menu_selection].atlasOriginCoord);
+				player_planted.emit(cell_position)
+				return;
+	if Globals.action_menu_selection == "GATHER" : 
+		var crops = cellData.get_custom_data("cropType");
+		var age = cellData.get_custom_data("cropAge");
+		if crops >= 0 && Globals.crops[crops].daysToGrow == age :
+			set_cell(cell_position, OUTDOOR_DAY_SOURCE_ID, HOED_GROUND_TILE_COORD);
+			player_gathered.emit(cell_position,crops)
+			return;
+		
+	

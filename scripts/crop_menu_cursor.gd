@@ -1,15 +1,9 @@
 extends TextureRect
 
-@onready var parent_menu : HBoxContainer = get_parent().get_node('ActionMenuContainer/Menu/HBoxContainer')
+@onready var parent_menu : VBoxContainer = get_parent().get_node('CropMenuContainer/Menu/VBoxContainer')
 @export var cursor_offset : Vector2
 
-var actions = [
-	"DIG",
-	"PLANT",
-	"GATHER"
-]
 var cursor_index : int = 0
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,14 +12,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if owner.menu_open == true : 
+	if owner.menu_open == true :
 		var input := Vector2.ZERO;
-		if Input.is_action_just_pressed("right") :
-			input.x += 1
-		if Input.is_action_just_pressed("left") : 
-			input.x -= 1
-		set_cursor_from_index(cursor_index + input.x);
-		set_action_selected(cursor_index);
+		if Input.is_action_just_pressed("up") :
+			input.y -= 1
+		if Input.is_action_just_pressed("down") : 
+			input.y += 1
+		set_cursor_from_index(cursor_index + input.y);
+		set_crop_selected(cursor_index);
 	pass
 
 
@@ -46,7 +40,7 @@ func set_cursor_from_index(index : int ) -> void:
 	
 	global_position = Vector2(position.x,position.y + size.y / 2.0) - ( size / 2.0 ) - cursor_offset;
 	cursor_index = index;
-	
-func set_action_selected(index : int) -> void :
-	Globals.action_menu_selection = actions[index];
-	pass
+
+
+func set_crop_selected(index: int) -> void:
+	Globals.crop_menu_selection = index;

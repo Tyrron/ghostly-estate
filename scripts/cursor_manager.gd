@@ -6,6 +6,13 @@ var cell_position = Vector2i(0,0)
 
 signal cursor_moved(position: Vector2, cell_position: Vector2i)
 
+func _process(delta: float) -> void:
+	if %DayManager.night == true:
+		visible = false;
+	else : 
+		visible = true;
+	pass
+
 func _on_player_moved(_position: Vector2, direction: Vector2) -> void:
 	if direction.x != 0:
 		last_direction.x = direction.x

@@ -2,6 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_update_crops_label();
 	pass # Replace with function body.
 
 
@@ -16,14 +17,20 @@ func _process(delta: float) -> void:
 			visible = true
 			owner.menu_open = true;
 			return
-	if owner.selected_action != "PLANT" :
+	if Globals.action_menu_selection != "PLANT" :
 		$CropMenuContainer.visible = false;
 		$Crop_Cursor.visible = false;
 	else : 
 		$CropMenuContainer.visible = true;
 		$Crop_Cursor.visible = true;
+		_update_crops_label();
 	pass
 
+func _update_crops_label() -> void: 
+	$CropMenuContainer/Menu/VBoxContainer/Pumpkin.text = str(Globals.crops[0].label," ",Globals.crops[0].inPlayerInventory)
+	$CropMenuContainer/Menu/VBoxContainer/Corn.text = str(Globals.crops[1].label," ",Globals.crops[1].inPlayerInventory)
+	$CropMenuContainer/Menu/VBoxContainer/Potatoe.text = str(Globals.crops[2].label," ",Globals.crops[2].inPlayerInventory)
+	pass
 
 
 func _on_night_begin() -> void:

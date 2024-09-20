@@ -64,7 +64,6 @@ func _physics_process(_delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		enter_manor.emit(true)
-		%DayManager.set_night(true)
 
 func _on_night_begin() -> void:
 		animatedSprite.play("idle_night");
@@ -75,3 +74,7 @@ func _on_night_end() -> void:
 func _on_action_menu_menu_toggle(is_open: bool) -> void:
 	# prevent player moving if menu is open
 	lock_move = is_open
+
+
+func _on_action_menu_manor_menu_toggle(is_open: bool) -> void:
+	lock_move = is_open # Replace with function body.

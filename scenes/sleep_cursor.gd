@@ -1,8 +1,7 @@
 extends TextureRect
 
-@onready var parent_menu : VBoxContainer = get_parent().get_node('CropMenuContainer/Menu/VBoxContainer')
+@onready var parent_menu : HBoxContainer = get_parent().get_node('SleepMenuContainer/SleepPanel/HBoxContainer')
 @export var cursor_offset : Vector2
-
 
 var cursor_index : int = 0
 
@@ -14,14 +13,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var input := Vector2.ZERO;
-	if Input.is_action_just_pressed("up") :
-		input.y -= 1
-	if Input.is_action_just_pressed("down") : 
-		input.y += 1
-		
-	set_cursor_from_index(cursor_index + input.y);
-	
+	if owner.manor_menu_open == true : 
+		var input := Vector2.ZERO;
+		if Input.is_action_just_pressed("right") :
+			input.x += 1
+		if Input.is_action_just_pressed("left") : 
+			input.x -= 1
+		set_cursor_from_index(cursor_index + input.x);
+		set_night_menu(cursor_index)
 	pass
 
 
@@ -42,3 +41,7 @@ func set_cursor_from_index(index : int ) -> void:
 	
 	global_position = Vector2(position.x,position.y + size.y / 2.0) - ( size / 2.0 ) - cursor_offset;
 	cursor_index = index;
+	
+func set_night_menu(index: int) -> void: 
+	get_parent().night_menu = index;
+	pass;

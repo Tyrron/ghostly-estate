@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://s1mw3v4tb0xn"]
+[gd_scene load_steps=60 format=3 uid="uid://s1mw3v4tb0xn"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_1jlf5"]
 [ext_resource type="Script" path="res://scripts/hud_manager.gd" id="1_b7307"]
@@ -7,15 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://sew7jbf6kmpr" path="res://assets/aseprite/ui-tileset.png" id="3_r6ijk"]
 [ext_resource type="Script" path="res://scripts/action_menu_cursor.gd" id="4_1i46v"]
 [ext_resource type="Texture2D" uid="uid://cwwfj8gqucovh" path="res://assets/aseprite/transiNightToDay.png" id="4_kykor"]
-[ext_resource type="Script" path="res://crop_menu_cursor.gd" id="5_861pm"]
+[ext_resource type="Script" path="res://scripts/crop_menu_cursor.gd" id="5_861pm"]
+[ext_resource type="Script" path="res://manor_menu.gd" id="7_03o1c"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="7_26nyq"]
 [ext_resource type="Theme" uid="uid://o2b6un8ove81" path="res://assets/theme/UiTheme-night-timer.tres" id="7_hopng"]
 [ext_resource type="Theme" uid="uid://b0q0jowgiuroi" path="res://assets/theme/UiTheme-night.tres" id="7_nbj6t"]
+[ext_resource type="Script" path="res://scripts/manor_menu_cursor.gd" id="7_wk0go"]
+[ext_resource type="Script" path="res://scenes/sleep_cursor.gd" id="9_qfpe6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0n23y"]
 atlas = ExtResource("3_r6ijk")
 region = Rect2(48, 0, 16, 16)
 margin = Rect2(0, -2, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lsg7"]
+atlas = ExtResource("3_r6ijk")
+region = Rect2(50, 3, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yaeq"]
+atlas = ExtResource("3_r6ijk")
+region = Rect2(50, 3, 10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ee5n2"]
 atlas = ExtResource("3_cd87s")
@@ -379,15 +390,15 @@ text = "Plant
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Trap" type="Label" parent="Menu/ActionMenuContainer/Menu/HBoxContainer"]
+[node name="Gather" type="Label" parent="Menu/ActionMenuContainer/Menu/HBoxContainer"]
 layout_mode = 2
-text = "Trap
+text = "Gather
 "
 metadata/_edit_use_anchors_ = true
 
 [node name="CropMenuContainer" type="PanelContainer" parent="Menu"]
 layout_mode = 0
-offset_right = 69.0
+offset_right = 88.0
 offset_bottom = 112.0
 
 [node name="Menu" type="Panel" parent="Menu/CropMenuContainer"]
@@ -399,20 +410,24 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -14.5
-offset_top = 6.0
-offset_right = 26.5
-offset_bottom = 26.0
+offset_left = -24.0
+offset_top = 5.0
+offset_right = 27.0
+offset_bottom = 52.0
 grow_horizontal = 2
 
 [node name="Pumpkin" type="Label" parent="Menu/CropMenuContainer/Menu/VBoxContainer"]
 layout_mode = 2
-text = "Pumpkin"
+text = "Pumpkin x"
 horizontal_alignment = 2
 
 [node name="Corn" type="Label" parent="Menu/CropMenuContainer/Menu/VBoxContainer"]
 layout_mode = 2
-text = "Corn"
+text = "Corn x"
+
+[node name="Potatoe" type="Label" parent="Menu/CropMenuContainer/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Potatoe x"
 
 [node name="Action_Cursor" type="TextureRect" parent="Menu"]
 layout_mode = 0
@@ -433,6 +448,137 @@ offset_bottom = 23.0
 texture = SubResource("AtlasTexture_0n23y")
 script = ExtResource("5_861pm")
 cursor_offset = Vector2(8, 0)
+
+[node name="ManorMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_03o1c")
+
+[node name="ManorMenuContainer" type="PanelContainer" parent="ManorMenu"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="Menu" type="Panel" parent="ManorMenu/ManorMenuContainer"]
+layout_mode = 2
+theme = ExtResource("1_t54j5")
+
+[node name="Buy" type="Label" parent="ManorMenu/ManorMenuContainer/Menu"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 17.0
+text = "Buy Seeds
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ManorMenu/ManorMenuContainer/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -48.0
+offset_right = 6.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pumpkin" type="Label" parent="ManorMenu/ManorMenuContainer/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Pumpkin y x"
+
+[node name="Corn" type="Label" parent="ManorMenu/ManorMenuContainer/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Corn y x"
+
+[node name="Potatoe" type="Label" parent="ManorMenu/ManorMenuContainer/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Potatoe y x"
+
+[node name="Quit" type="Label" parent="ManorMenu/ManorMenuContainer/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Upgrade" type="Label" parent="ManorMenu/ManorMenuContainer/Menu"]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 74.0
+offset_right = 50.0
+offset_bottom = 87.0
+text = "Upgrade
+"
+
+[node name="Money" type="Label" parent="ManorMenu/ManorMenuContainer/Menu"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 4.0
+offset_right = 122.0
+offset_bottom = 17.0
+text = "Money: "
+
+[node name="SleepMenuContainer" type="PanelContainer" parent="ManorMenu"]
+layout_mode = 0
+offset_top = 101.0
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="SleepPanel" type="Panel" parent="ManorMenu/SleepMenuContainer"]
+layout_mode = 2
+theme = ExtResource("1_t54j5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ManorMenu/SleepMenuContainer/SleepPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -6.5
+offset_right = 48.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Buy" type="Label" parent="ManorMenu/SleepMenuContainer/SleepPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Buy
+"
+
+[node name="Sleep" type="Label" parent="ManorMenu/SleepMenuContainer/SleepPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Wait the Night
+"
+
+[node name="BuyCursor" type="TextureRect" parent="ManorMenu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 26.0
+offset_right = 26.0
+offset_bottom = 37.0
+texture = SubResource("AtlasTexture_7lsg7")
+script = ExtResource("7_wk0go")
+cursor_offset = Vector2(7, 0)
+
+[node name="SleepCursor" type="TextureRect" parent="ManorMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 119.0
+offset_right = 18.0
+offset_bottom = 130.0
+texture = SubResource("AtlasTexture_8yaeq")
+script = ExtResource("9_qfpe6")
+cursor_offset = Vector2(7, 0)
 
 [node name="NightTimerPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -486,5 +632,6 @@ frame_progress = 0.269288
 
 [connection signal="night_begin" from="." to="Transition" method="_on_night_begin"]
 [connection signal="night_end" from="." to="Transition" method="_on_night_end"]
+[connection signal="night_button_pressed" from="ManorMenu" to="." method="_on_manor_menu_night_button_pressed"]
 [connection signal="animation_finished" from="Transition/TransiDayNight" to="Transition" method="_on_transi_day_night_animation_finished"]
 [connection signal="animation_finished" from="Transition/TransiNightDay" to="Transition" method="_on_transi_night_day_animation_finished"]

@@ -21,3 +21,8 @@ func set_night(is_night: bool) -> void:
 func _on_night_timer_timeout() -> void:
 	night = false
 	night_end.emit()
+
+
+func _on_action_menu_night_triggered(is_trigger: bool) -> void:
+	set_night(true);
+	pass # Replace with function body.
