@@ -633,5 +633,7 @@ frame_progress = 0.269288
 [connection signal="night_begin" from="." to="Transition" method="_on_night_begin"]
 [connection signal="night_end" from="." to="Transition" method="_on_night_end"]
 [connection signal="night_button_pressed" from="ManorMenu" to="." method="_on_manor_menu_night_button_pressed"]
+[connection signal="animation_finished" from="Transition/TransiDayNight" to="." method="_on_transi_day_night_animation_finished"]
 [connection signal="animation_finished" from="Transition/TransiDayNight" to="Transition" method="_on_transi_day_night_animation_finished"]
+[connection signal="animation_finished" from="Transition/TransiNightDay" to="." method="_on_transi_night_day_animation_finished"]
 [connection signal="animation_finished" from="Transition/TransiNightDay" to="Transition" method="_on_transi_night_day_animation_finished"]

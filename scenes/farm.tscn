@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c1xg1eqplq47r"]
+[gd_scene load_steps=16 format=4 uid="uid://c1xg1eqplq47r"]
 
 [ext_resource type="TileSet" uid="uid://csbh0c12hqmkt" path="res://assets/tilesets/outdoor.tres" id="1_6yw8x"]
 [ext_resource type="PackedScene" uid="uid://dm3jmgt8ctg37" path="res://scenes/player.tscn" id="2_88nb7"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="8_volhw"]
 [ext_resource type="Script" path="res://scripts/day_manager.gd" id="10_2132l"]
 [ext_resource type="Script" path="res://scripts/crop_manager.gd" id="10_msewo"]
+[ext_resource type="Script" path="res://scripts/music_manager.gd" id="12_vuqgx"]
+[ext_resource type="AudioStream" uid="uid://ct1y5xsie73v3" path="res://assets/audio/music/Ghostly Estate - Routine.wav" id="13_lhnvv"]
+[ext_resource type="AudioStream" uid="uid://cchdnkmy5uuh8" path="res://assets/audio/music/Ghostly Estate - Spooked.wav" id="14_lx4qi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gaks"]
 size = Vector2(32, 11)
@@ -62,8 +65,14 @@ unique_name_in_owner = true
 script = ExtResource("10_2132l")
 
 [node name="NightTimer" type="Timer" parent="DayManager"]
-wait_time = 5.0
+wait_time = 60.0
 one_shot = true
+
+[node name="MusicManager" type="AudioStreamPlayer" parent="."]
+script = ExtResource("12_vuqgx")
+day_music = ExtResource("13_lhnvv")
+night_music = ExtResource("14_lx4qi")
+night_music_loop_start_position = 9.6
 
 [connection signal="player_gathered" from="Ground" to="CropManager" method="_on_ground_player_gathered"]
 [connection signal="player_planted" from="Ground" to="CropManager" method="_on_ground_player_planted"]
@@ -74,6 +83,7 @@ one_shot = true
 [connection signal="manor_menu_toggle" from="ActionMenu" to="Player" method="_on_action_menu_manor_menu_toggle"]
 [connection signal="menu_toggle" from="ActionMenu" to="Player" method="_on_action_menu_menu_toggle"]
 [connection signal="night_triggered" from="ActionMenu" to="DayManager" method="_on_action_menu_night_triggered"]
+[connection signal="transition_finished" from="ActionMenu" to="MusicManager" method="_on_action_menu_transition_finished"]
 [connection signal="body_entered" from="Triggers/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="night_begin" from="DayManager" to="Ground" method="_on_night_begin"]
 [connection signal="night_begin" from="DayManager" to="Buildings" method="_on_night_begin"]
@@ -81,10 +91,12 @@ one_shot = true
 [connection signal="night_begin" from="DayManager" to="ActionMenu" method="_on_night_begin"]
 [connection signal="night_begin" from="DayManager" to="CropManager" method="_on_day_manager_night_begin"]
 [connection signal="night_begin" from="DayManager" to="DayManager/NightTimer" method="start"]
+[connection signal="night_begin" from="DayManager" to="MusicManager" method="_on_day_manager_night_begin"]
 [connection signal="night_end" from="DayManager" to="Ground" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="Buildings" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="Player" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="ActionMenu" method="_on_night_end"]
 [connection signal="night_end" from="DayManager" to="CropManager" method="_on_day_manager_night_end"]
-[connection signal="timeout" from="DayManager/NightTimer" to="DayManager" method="_on_night_timer_timeout"]
+[connection signal="night_end" from="DayManager" to="MusicManager" method="_on_day_manager_night_end"]
 [connection signal="timeout" from="DayManager/NightTimer" to="DayManager" method="_on_night_end"]
+[connection signal="timeout" from="DayManager/NightTimer" to="DayManager" method="_on_night_timer_timeout"]

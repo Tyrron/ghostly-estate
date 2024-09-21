@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal night_begin
 signal night_end
+signal transition_finished(is_day_starting: bool)
 signal menu_toggle(is_open: bool)
 signal manor_menu_toggle(is_open: bool)
 signal night_triggered(is_trigger : bool)
@@ -45,4 +46,14 @@ func update_manor_menu_visibility(value : bool) -> void:
 
 func _on_manor_menu_night_button_pressed(value: bool) -> void:
 	night_triggered.emit(value)
+	pass # Replace with function body.
+
+
+func _on_transi_day_night_animation_finished() -> void:
+	transition_finished.emit(false)
+	pass # Replace with function body.
+
+
+func _on_transi_night_day_animation_finished() -> void:
+	transition_finished.emit(true)
 	pass # Replace with function body.
