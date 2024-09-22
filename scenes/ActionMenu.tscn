@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://scripts/action_menu_cursor.gd" id="4_1i46v"]
 [ext_resource type="Texture2D" uid="uid://cwwfj8gqucovh" path="res://assets/aseprite/transiNightToDay.png" id="4_kykor"]
 [ext_resource type="Script" path="res://scripts/crop_menu_cursor.gd" id="5_861pm"]
-[ext_resource type="Script" path="res://manor_menu.gd" id="7_03o1c"]
+[ext_resource type="Script" path="res://scripts/manor_menu.gd" id="7_03o1c"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="7_26nyq"]
 [ext_resource type="Theme" uid="uid://o2b6un8ove81" path="res://assets/theme/UiTheme-night-timer.tres" id="7_hopng"]
 [ext_resource type="Theme" uid="uid://b0q0jowgiuroi" path="res://assets/theme/UiTheme-night.tres" id="7_nbj6t"]
 [ext_resource type="Script" path="res://scripts/manor_menu_cursor.gd" id="7_wk0go"]
-[ext_resource type="Script" path="res://scenes/sleep_cursor.gd" id="9_qfpe6"]
+[ext_resource type="Script" path="res://scripts/sleep_cursor.gd" id="9_qfpe6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0n23y"]
 atlas = ExtResource("3_r6ijk")

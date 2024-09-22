@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://j3m6v82i6sla"]
+
+[ext_resource type="Script" path="res://scripts/mob.gd" id="1_ed85o"]
+[ext_resource type="Texture2D" uid="uid://21jd0muvvuvr" path="res://assets/aseprite/human.png" id="1_l870m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp4ud"]
+atlas = ExtResource("1_l870m")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo4fq"]
+atlas = ExtResource("1_l870m")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wjpb"]
+atlas = ExtResource("1_l870m")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d6i6"]
+atlas = ExtResource("1_l870m")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kco73"]
+atlas = ExtResource("1_l870m")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e8l5"]
+atlas = ExtResource("1_l870m")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpkk3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp4ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo4fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wjpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d6i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kco73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e8l5")
+}],
+"loop": true,
+"name": &"idle_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rct57"]
+size = Vector2(8, 16)
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_ed85o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tpkk3")
+animation = &"idle_walk"
+frame_progress = 0.4043
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rct57")

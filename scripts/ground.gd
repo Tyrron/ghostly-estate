@@ -57,7 +57,6 @@ func _on_night_end() -> void:
 
 func _on_player_action(_position: Vector2, cell_position: Vector2i) -> void:
 	var cellData = get_cell_tile_data(cell_position)
-	print(Globals.action_menu_selection);
 	if %DayManager.night == true:
 		return
 	if Globals.action_menu_selection == "DIG" : 
